@@ -1,0 +1,10 @@
+{
+  "id": "create-danny-repo",
+  "type": "github.create_repo",
+  "requires_approval": true,
+  "payload": {
+    "name": "Danny-Ai",
+    "private": true,
+    "readme": "This repo contains the Danny AI assistant workspace and orchestrator scaffold."
+  }
+}
