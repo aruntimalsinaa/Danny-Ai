@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Orchestrator Task",
+  "type": "object",
+  "required": ["id", "type", "payload"],
+  "properties": {
+    "id": {"type": "string"},
+    "type": {"type": "string"},
+    "requires_approval": {"type": "boolean", "default": true},
+    "payload": {"type": "object"}
+  }
+}
