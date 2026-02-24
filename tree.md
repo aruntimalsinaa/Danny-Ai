@@ -13,7 +13,7 @@ This document describes the high-level workflow tree for Danny's orchestrator an
    - Decide action: approve, edit, or reject
 
 3. Approve (explicit)
-   - Command: approvals/approve.py <pending.json>
+   - Command: orchestrator/approvals/approve.py <pending.json>
    - Must type APPROVE or pass --yes
 
 4. Execute Handlers (single approval runs handler)
@@ -24,7 +24,7 @@ This document describes the high-level workflow tree for Danny's orchestrator an
      - git.commit_push (git+push)
      - github.create_issue (gh)
      - run.shell (requires allow_run=true)
-     - pr.create_flow (composite: write -> branch -> commit -> push -> create PR -> request review -> optional merge)
+     - pr.create_flow (composite: write -> branch -> commit -> push -> create PR -> request reviewers -> optional merge; merging should preferably be a separate approval)
      - github.review_pr / github.post_pr_comment / github.merge_pr (review & merge actions)
 
 5. Logging & Audit
@@ -59,3 +59,6 @@ flowchart TD
 ```
 
 
+
+
+Render the Mermaid diagram: use VS Code Mermaid preview, https://mermaid.live, or mermaid-cli to render diagram.mmd.

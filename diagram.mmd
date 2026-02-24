@@ -1,10 +1,11 @@
+%% Mermaid diagram for the orchestrator workflow (render with Mermaid renderer)
 flowchart TD
-  A[Submit Task\n(example JSON / CLI / Chat)] --> B[run.py\nCreate pending file]
-  B --> C[Pending Approval\n(orchestrator/approvals/*.pending.json)]
+  A[Submit Task<br>(example JSON / CLI / Chat)] --> B[run.py<br>Create pending file]
+  B --> C[Pending Approval<br>(orchestrator/approvals/*.pending.json)]
   C --> D[Human Review]
   D --> E{Approve?}
-  E -- No --> F[Edit or Reject\n(pending remains or removed)]
-  E -- Yes --> G[approve.py\nExecute Handler]
+  E -- No --> F[Edit or Reject<br>(pending remains or removed)]
+  E -- Yes --> G[approve.py<br>Execute Handler]
   G --> H[Handler Types]
   H --> H1[file.write]
   H --> H2[web.fetch]
@@ -12,6 +13,6 @@ flowchart TD
   H --> H4[github.create_repo]
   H --> H5[pr.create_flow]
   H --> H6[run.shell (allow_run)]
-  G --> I[Logs & Audit\n(orchestrator/logs/*.approve.log)]
+  G --> I[Logs & Audit<br>(orchestrator/logs/*.approve.log)]
   I --> J[Rename pending -> .done.json]
   J --> K[Optional: new tasks / CI checks / merge requests]
