@@ -78,3 +78,34 @@ Assets & hashtags
 - Hashtags: #AI #automation #devtools #opensource #github
 - Suggested image: repo logo or a short GIF showing run→pending→approve
 
+
+
+
+---
+
+Update: PR handling, CI checks, and merging
+
+Danny now supports full PR workflows via the orchestrator:
+
+- pr.create_flow (composite): write files, create branch, commit & push, open PR, request reviewers, optionally merge after approval.
+- github.create_pr, github.request_review, github.merge_pr: discrete handlers for fine-grained control.
+- github.review_pr & github.post_pr_comment: post reviews and comments via pending tasks.
+- github.check_pr_ci: query GitHub Actions / Checks for PR status; can also run local tests as a pending task.
+
+Example PR flow (thread snippet):
+
+1) Create a task to modify files and open a PR (examples/pr_create_flow_example.json)
+2) Run run.py → task becomes pending
+3) Review the pending task and APPROVE → orchestrator clones, pushes branch, and opens a PR
+4) Use 'Check CI' task to fetch GitHub Actions status or run local tests
+5) Create a pending merge task; approve to merge (merge/squash/rebase supported)
+
+Security and safety
+- Every network/git action requires explicit approval (APPROVE or --yes).
+- run.shell requires allow_run=true in the payload.
+- merge actions are gated and can be configured to require a second approval after CI passes.
+
+Try it
+- See skills/orchestrator-danny/examples/ for PR examples.
+- To post reviews/comments, create a run.shell or github.review_pr task and approve it.
+
