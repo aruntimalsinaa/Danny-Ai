@@ -1,0 +1,18 @@
+{
+  "id": "pr-flow-example-1",
+  "type": "pr.create_flow",
+  "requires_approval": true,
+  "payload": {
+    "repo": "aruntimalsinaa/Danny-Ai",
+    "base_branch": "main",
+    "feature_branch": "feature/demo-pr",
+    "files": [
+      {"path": "docs/auto_pr_note.txt", "content": "This PR was created by the Danny orchestrator demo."}
+    ],
+    "commit_message": "chore: add auto PR note",
+    "pr_title": "Add auto PR note",
+    "pr_body": "This PR demonstrates the orchestrator pr.create_flow composite handler.",
+    "request_reviewers": [],
+    "merge_after": false
+  }
+}
